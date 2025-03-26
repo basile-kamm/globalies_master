@@ -1,0 +1,75 @@
+{
+    "packages": [
+        {
+            "name": "matt-plugins/deactivation-modal",
+            "version": "1.1.0",
+            "version_normalized": "1.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/matt-plugins/deactivation-modal.git",
+                "reference": "5f85cb93f2260c7c2626a86ab44e9a4f735664dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/matt-plugins%2Fdeactivation-modal/repository/archive.zip?sha=5f85cb93f2260c7c2626a86ab44e9a4f735664dc",
+                "reference": "5f85cb93f2260c7c2626a86ab44e9a4f735664dc",
+                "shasum": ""
+            },
+            "require-dev": {
+                "10up/wp_mock": "*",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpunit/phpunit": "<7",
+                "wp-coding-standards/wpcs": "^2.3"
+            },
+            "time": "2024-12-18T21:32:31+00:00",
+            "type": "library",
+            "extra": {
+                "assets-values": {
+                    "plugin-slug": {
+                        "search": "{__PLUGIN_SLUG__}",
+                        "replace": "<?php echo $plugin_slug; ?>"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "MattPlugins\\DeactivationModal\\": "src"
+                }
+            },
+            "scripts": {
+                "build": [
+                    "npm install && npm run prod"
+                ],
+                "phpcs": [
+                    "phpcs"
+                ],
+                "phpunit-unit": [
+                    "phpunit --configuration phpunit-unit.xml --coverage-text --colors=never --coverage-html=build-coverage"
+                ],
+                "phpunit-unit-fast": [
+                    "phpunit --configuration phpunit-unit.xml --no-coverage"
+                ],
+                "post-install-cmd": [
+                    "echo #!/bin/sh > .git/hooks/pre-commit",
+                    "echo:>> .git/hooks/pre-commit",
+                    "echo echo \"Building assets...\" >> .git/hooks/pre-commit",
+                    "echo composer run build >> .git/hooks/pre-commit",
+                    "echo git add assets/ >> .git/hooks/pre-commit"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Mateusz Gbiorczyk",
+                    "email": "mateusz@gbiorczyk.pl"
+                }
+            ],
+            "support": {
+                "source": "https://gitlab.com/matt-plugins/deactivation-modal/-/tree/1.1.0"
+            },
+            "install-path": "../matt-plugins/deactivation-modal"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}
