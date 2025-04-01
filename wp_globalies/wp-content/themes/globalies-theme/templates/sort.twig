@@ -1,0 +1,47 @@
+<button aria-label="Open filter" onclick="openFilter()" class="filters-box mobile-open hidden">
+	🔍
+</button>
+<form method="get" class="filters-cont">
+	<input class="filters-box research" type="text" name="search" value="{{search}}" placeholder="Rechercher..."/>
+	<div class="filters-box trier">
+		<h2 class="filters-box-title">Trier</h2>
+		<div class="filters-box-cont">
+			<label><input type="radio" name="sort" value="DESC" {% if sorting_param == 'DESC' %} checked {% endif %}/>
+				<div class="filter-box-radio"></div>
+				Score
+				<span>(décroissant)</span>
+			</label>
+			<label><input type="radio" name="sort" value="ASC" {% if sorting_param == 'ASC' %} checked {% endif %}/>
+				<div class="filter-box-radio"></div>
+				Score
+				<span>(croissant)</span>
+			</label>
+			<label><input type="radio" name="sort" {% if not sorting_param or sorting_param == "initial" %} checked {% endif %} value="initial"/>
+				<div class="filter-box-radio"></div>
+				Récemment ajouté</label>
+		</div>
+	</div>
+	{% if slug == "marque" %}
+		<div class="filters-box filtrer">
+			<h2 class="filters-box-title">Filter</h2>
+			<div class="filters-box-cont">
+				<label>
+					<input type="radio" name="filter" {% if filter_param == 'inde' %} checked {% endif %} value="inde"/>
+					<div class="filter-box-radio"></div>
+					Marques indépendantes
+				</label>
+				<label>
+					<input type="radio" name="filter" {% if filter_param == 'sub' %} checked {% endif %} value="sub"/>
+					<div class="filter-box-radio"></div>
+					Sous-marques
+				</label>
+				<label>
+					<input type="radio" name="filter" {% if not filter_param or filter_param == "all" %} checked {% endif %} value="all"/>
+					<div class="filter-box-radio"></div>
+					Toutes
+				</label>
+			</div>
+		</div>
+	{% endif %}
+	{% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+</form>

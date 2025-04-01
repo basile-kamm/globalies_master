@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<main>
+		<div class="archive-content">
+			<div class="archive-content-bg"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-0 col-md-2">
+						{% include 'sort.twig' %}
+					</div>
+					<div class="col-12 col-md-10">
+						<div class="archive-title-cont">
+							<h1 class="archive-title main">Marques</h1>
+							<p class="archive-title difference">Marques</p>
+						</div>
+						<div class="archives-cont">
+							{% for post in posts %}
+								<a href="{{post.link}}" class="archive-item solo-{{ get_score_category(post.score)}}">
+									<h3 class="archive-item-title">{{post.title}}</h3>
+									<div class="archive-item-texts">
+										<p class="archive-item-type">{{post.type}}</p>
+										{% if post.related_multinationale %}
+											{% for multi in Post(post.related_multinationale) %}
+												<p class="archive-item-situation">Sous-marque de
+													{{multi.title}}</p>
+											{% endfor %}
+										{% else %}
+											<p class="archive-item-situation">Marque indépendante</p>
+										{% endif %}
+									</div>
+									<div class="archive-item-score">
+										<p>{{post.score}}</p>
+										<p>{{post.score}}</p>
+										<p>{{post.score}}</p>
+									</div>
+									<img src="{{Image(post.logo)}}" class="archive-item-logo" loading="lazy" alt=""/>
+								</a>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="blank.html" class="archive-corr">Suggérer une correction</a>
+		</div>
+		<div class="archive-bg-cont">
+			<img src="{{ theme_uri }}/img/archive-bg.webp" alt="" class="archive-bg"/>
+		</div>
+	</main>
+{% endblock %}

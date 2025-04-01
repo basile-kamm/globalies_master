@@ -1,0 +1,61 @@
+{% if posts.pagination.pages is not empty %}
+	<nav class="pagination-block ">
+		<ul
+			class="pagination filters-box pagination">
+
+
+			{# Previous #}
+			{% if posts.pagination.prev %}
+				<a class="prev filters-box-pagination-elem text" href="{{ posts.pagination.prev.link }}">précedent</a>
+			{% else %}
+				<button class="prev filters-box-pagination-elem text disabled" disabled>précédent</button>
+			{% endif %}
+
+			{# First #}
+			{% if posts.pagination.pages|first and posts.pagination.pages|first.current != true %}
+				<a class="first btn filters-box-pagination-elem" href="{{ posts.pagination.pages|first.link }}">1</a>
+			{% else %}
+				<button class="first btn filters-box-pagination-elem disabled" disabled>1</button>
+			{% endif %}
+
+			{# Pages #}
+			{% for page in posts.pagination.pages %}
+				{% if page.link %}
+					<li>
+						<a href="{{ page.link }}" class="{{ page.class }}">{{ page.title }}</a>
+					</li>
+				{% else %}
+					<li class="current">
+						<span class="{{ page.class }}">{{ page.title }}</span>
+					</li>
+				{% endif %}
+			{% endfor %}
+
+			{# current #}
+			{% if posts.pagination.pages|last.current or posts.pagination.pages|first.current != true %}
+				<button class="first btn filters-box-pagination-elem disabled" disabled>
+					{{posts.pagination.current}}</button>
+			{% else %}
+				<button class="first btn filters-box-pagination-elem " disabled>
+					...</button>
+			{% endif %}
+
+
+			{# Last #}
+			{% if posts.pagination.pages|last and posts.pagination.pages|last.current != true %}
+				<a href="{{ posts.pagination.pages|last.link }}" class="last filters-box-pagination-elem text">{{posts.pagination.total}}</a>
+			{% else %}
+				<button class="last filters-box-pagination-elem text disabled" disabled>{{posts.pagination.total}}</button>
+			{% endif %}
+
+			{# Next #}
+			{% if posts.pagination.next %}
+				<a class="next filters-box-pagination-elem text" href="{{ posts.pagination.next.link }}">suivant</a>
+			{% else %}
+				<button class="next filters-box-pagination-elem text disabled" disabled>suivant</button>
+			{% endif %}
+
+
+		</ul>
+	</nav>
+{% endif %}

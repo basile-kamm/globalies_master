@@ -1,0 +1,28 @@
+<section class="article-section">
+	<h2 class="article-section-title">Articles liés</h2>
+	<div class="articles-cont">
+
+		{% if post.related_articles %}
+			{% for article in Post(post.related_articles) %}
+				<a href="{{ article.article_url }}" target="_blank" class="article random-x">
+					<img src="{{Image(article.image)}}" alt="" class="article-img">
+					<div class="article-texts">
+						<h3 class="article-title">
+							{{article.label}}
+						</h3>
+						<p class="article-date">{{article.time_posted}}
+						</p>
+					</div>
+				</a>
+			{% endfor %}
+			<a href="{{page_blank}}" class="article-cta-btn">
+				Suggérer un article
+			</a>
+		{% else %}
+			<h3 class="article-blank">Il n’y pas encore d’article lié à cette marque...</h3>
+			<a href="" class="article-cta-btn center">
+				Suggérer un article
+			</a>
+		{% endif %}
+	</div>
+</section>

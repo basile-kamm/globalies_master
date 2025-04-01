@@ -1,0 +1,71 @@
+<?php
+/**
+ * The template for displaying Archive pages.
+ *
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * Methods for TimberHelper can be found in the /lib sub-directory
+ *
+ * @package  WordPress
+ * @subpackage  Timber
+ * @since   Timber 0.2
+ */
+
+$templates = array( 'archive.twig', 'index.twig' );
+
+$context = Timber::context();
+
+
+$context['title'] = 'Archive';
+if ( is_day() ) {
+	$context['title'] = 'Archive: ' . get_the_date( 'D M Y' );
+} elseif ( is_month() ) {
+	$context['title'] = 'Archive: ' . get_the_date( 'M Y' );
+} elseif ( is_year() ) {
+	$context['title'] = 'Archive: ' . get_the_date( 'Y' );
+} elseif ( is_tag() ) {
+	$context['title'] = single_tag_title( '', false );
+} elseif ( is_category() ) {
+	$context['title'] = single_cat_title( '', false );
+	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
+} elseif ( is_post_type_archive() ) {
+	$context['title'] = post_type_archive_title( '', false );
+	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
+}
+
+// la base des paramètres pour la requête
+$query_args = [
+	'post_type' => 'multinationale',
+		 'posts_per_page' => -1,
+ ];
+ // retrouver la valeur du paramètre "score" s'il est présent
+ $context["sorting_param"] = get_query_var("sort") ? get_query_var("sort") : NULL;
+ // Si sort, modifer les paramètres de la requête pour modifier l'ordre des multinationales en fonction
+ if ($context["sorting_param"]) {
+	$query_args['meta_key'] = 'score';
+	$query_args['orderby'] = 'meta_value';
+	$query_args['order'] = $context["sorting_param"];
+ }
+ 
+ if ($context["sorting_param"] == "initial") {
+	unset($query_args['meta_key']);
+	unset($query_args['orderby']);
+	unset($query_args['order']);
+}
+
+ // retrouver le terme de recherche si présent
+ $context["search"] = get_query_var("search") ? get_query_var("search") : "";
+ // Si terme de recherche, l'ajouter aux paramètres de la requête
+ if ($context["search"]) {
+	$query_args['s'] = $context["search"];
+ }
+ 
+
+$context['posts'] = Timber::get_posts($query_args);
+$context['slug'] = get_post_type();
+
+
+Timber::render( $templates, $context );

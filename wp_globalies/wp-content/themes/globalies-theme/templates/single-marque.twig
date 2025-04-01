@@ -1,0 +1,106 @@
+{% extends "base.twig" %}
+
+
+{% block content %}
+	<main class="{{ get_score_category(post.score)}}">
+		<section class="single-hero-cont">
+			<h2 class="single-hero-siege-social">{{ post.type}}</h2>
+			<h1 class="single-hero-title">{{post.title}}
+			</h1>
+			<div class="single-hero-score-cont">
+				<div class="single-hero-score-line">
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+					<p class="single-hero-score">{{post.score}}</p>
+				</div>
+			</div>
+			{% if post.hero_bg %}
+				<img src="{{ Image(post.hero_bg).src }}" alt="" class="single-hero-img">
+			{% else %}
+				<img src="{{ theme_uri }}/img/usine.webp" alt="" class="single-hero-img">
+			{% endif %}
+			<div class="single-hero-tiles" data-logo-url="{{ Image(post.logo).src }}"></div>
+		</section>
+		<section class="single-content">
+			<div class="single-pattern-container"></div>
+			<div class="single-bg"></div>
+			<section class="single-notation-section">
+
+				{% include 'notation-critere.twig' %}
+				{% if post.related_multinationale %}
+					{% for multi in Post(post.related_multinationale) %}
+						<a href="{{ multi.link }}" target="_blank" class="single-multinationale-thumbnail solo-{{ get_score_category(multi.score)}}">
+							<p class="single-multinationale-score">{{ multi.meta('score') }}</p>
+							<p class="single-multinationale-name">{{ multi.title }}</p>
+							<p class="single-multinationale-text">
+								Cette
+								<br>
+								marque
+								<br>
+								: appartient à
+							</p>
+							<img src="{{ Image(multi.hero_bg).src }}" alt="" class="single-multinationale-img">
+							<img src="{{ Image(multi.logo).src }}" alt="" class="single-multinationale-img logo">
+						</a>
+					{% endfor %}
+				{% else %}
+					<div class="single-multinationale-thumbnail inde">
+						<p class="single-multinationale-name">
+							Marque
+							<br/>
+							indépendante
+						</p>
+						<img src="{{ theme_uri }}/img/background-gouille.webp" alt="" class="single-multinationale-img"/>
+					</div>
+				{% endif %}
+				<div class="single-notation-transi"></div>
+				<div class="single-notation-transi reverse"></div>
+			</section>
+			{% include 'articles.twig' %}
+
+			<section class="single-alternative-section">
+				<div class="single-alternative-content">
+					<h2 class="single-alternative-section-title">Alternatives</h2>
+					{% if post.alternatives %}
+						<div class="single-alternative-cont">
+							{% for marque in Post(post.alternatives) %}
+								<a href="{{marque.link}}" class="single-alternative solo-{{ get_score_category(marque.score)}}">
+									<h3 class="single-alternative-title">{{marque.title}}</h3>
+									{% if marque.related_multinationale %}
+										{% for multi in Post(marque.related_multinationale) %}
+											<p class="single-alternative-type">Sous-marque de
+												{{multi.title}}</p>
+										{% endfor %}
+									{% else %}
+										<p class="single-alternative-type">Marque indépendante</p>
+									{% endif %}
+									<div class="single-alternative-score">
+										<p>{{marque.score}}</p>
+										<p>{{marque.score}}</p>
+										<p>{{marque.score}}</p>
+										<p>{{marque.score}}</p>
+									</div>
+								</a>
+							{% endfor %}
+						</div>
+
+					{% else %}
+						<h3 class="single-alternative-blank">Il n’y pas encore d'alternative à cette marque...</h3>
+
+					{% endif %}
+				</div>
+				<a href="{{page_blank}}" class="single-alternative-corr">Suggérer une correction</a>
+				<img src="{{ theme_uri }}/img/coline-fade.webp" alt="" loading="lazy" class="single-alternative-fade">
+				<img src="{{ theme_uri }}/img/coline.webp" alt="" loading="lazy" class="single-alternative-bg">
+			</section>
+		</section>
+	</main>
+{% endblock %}

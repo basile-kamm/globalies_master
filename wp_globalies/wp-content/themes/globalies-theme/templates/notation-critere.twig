@@ -1,0 +1,35 @@
+<div class="single-notation-critere-cont">
+	<h2 class="single-notation-critere-titles">Critères de notation</h2>
+	<div class="single-notation-criteres">
+		{% if post.impact_ecologique %}
+			<div class="single-notation-critere solo-{{ categories.impact_ecologique_category }}">
+				<p class="single-notation-critere-label">impact écologique</p>
+				<p class="single-notation-critere-score">{{ post.impact_ecologique }}</p>
+			</div>
+		{% endif %}
+		{% if post.produit_chimique %}
+			<div class="single-notation-critere solo-{{ categories.produit_chimique_category }}">
+				<p class="single-notation-critere-label">produit chimique</p>
+				<p class="single-notation-critere-score">{{ post.produit_chimique }}</p>
+			</div>
+		{% endif %}
+		{% if post.conditions_travail %}
+			<div class="single-notation-critere solo-{{ categories.conditions_travail_category }}">
+				<p class="single-notation-critere-label">conditions de travail</p>
+				<p class="single-notation-critere-score">{{ post.conditions_travail }}</p>
+			</div>
+		{% endif %}
+		{% if post.influence_politique %}
+			<div class="single-notation-critere solo-{{ categories.influence_politique_category }}">
+				<p class="single-notation-critere-label">influence politique</p>
+				<p class="single-notation-critere-score">{{ post.influence_politique }}</p>
+			</div>
+		{% endif %}
+		{% if post.impact_local %}
+			<div class="single-notation-critere solo-{{ categories.impact_local_category }}">
+				<p class="single-notation-critere-label">impact local</p>
+				<p class="single-notation-critere-score">{{ post.impact_local }}</p>
+			</div>
+		{% endif %}
+	</div>
+</div>

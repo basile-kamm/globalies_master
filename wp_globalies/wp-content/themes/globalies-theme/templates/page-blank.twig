@@ -1,0 +1,13 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<main>
+		<p class="blank-text">Page en cours de construction</p>
+		{% set previous_page = fn('wp_get_referer') %}
+		{% if previous_page %}
+			<a href="{{ previous_page }}" class="blank-btn">Revenir en arrière</a>
+		{% endif %}
+		<img src="{{ theme_uri }}/img/footer.webp" alt="" class="blank-bg"/>
+	</main>
+	<!-- /content-wrapper -->
+{% endblock %}

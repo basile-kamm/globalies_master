@@ -1,0 +1,143 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<main>
+		<!-- hero section -->
+
+		<section class="hero-section">
+			<div class="hero-titles">
+				<div class="hero-title-cont welcome">
+					<img src="{{ theme_uri }}/img/bienvenue.webp" alt="" class="hero-title-img">
+				</div>
+				<div class="hero-title-cont sur">
+					<img src="{{ theme_uri }}/img/sur.webp" alt="" class="hero-title-img">
+				</div>
+				<div class="hero-title-cont globalies">
+					<h1>
+						<img src="{{ theme_uri }}/img/globalies.webp" alt="" class="hero-title-img">
+					</h1>
+				</div>
+			</div>
+			<div class="hero-cta">
+				<div class="hero-cta-arrow">
+					<svg width="16" height="19" viewbox="0 0 16 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18L7 18ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928933 6.65685C0.538408 7.04738 0.538408 7.68054 0.928933 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1L7 1L7 18L9 18Z" fill="white"></path>
+					</svg>
+				</div>
+				<p>scrollez pour découvrir</p>
+			</div>
+			<div class="hero-background">
+				<img src="{{ theme_uri }}/img/hero-homepage.webp" srcset="{{ theme_uri }}/img/hero-homepage-mobile.webp 700w, {{ theme_uri }}/img/hero-homepage.webp 1200w" alt="">
+			</div>
+		</section>
+		<!-- showcase section -->
+		<section class="showcase-cont">
+			<div class="showcase-searchbar">
+				{% for link in menu.get_items %}
+					<a href="{{link.link}}" class="showcase-searchbar-cta">Voir toutes les
+						{{link.title}}</a>
+				{% endfor %}
+			</div>
+			<div class="showcase-cards-cont">
+				{% for multi in multinationales %}
+					<a href="{{multi.link}}" class="showcase-card random-x solo-{{ get_score_category(multi.score)}}">
+						<div class="showcase-card-title-cont">
+							<h2 class="showcase-card-title">{{multi.title}}</h2>
+							<p class="showcase-card-cta">en savoir plus...</p>
+						</div>
+						<div class="showcase-card-brands-cont">
+							{% for marque in Post(multi.sous_marque) %}
+								<div class="showcase-card-brand solo-{{ get_score_category(marque.score)}}">
+									<h3 class="showcase-card-brand-title">{{marque.title}}</h3>
+									<p class="showcase-card-brand-type">{{marque.type}}</p>
+									<img src="{{Image(marque.logo)}}" alt="" loading="lazy" class="showcase-card-brand-logo">
+								</div>
+							{% endfor %}
+						</div>
+						<div class="showcase-card-score-cont">
+							<p class="showcase-card-score">{{multi.score}}</p>
+							<div class="showcase-card-score-bg">
+								<svg xmlns="http://www.w3.org/2000/svg" width="147" height="147" viewbox="0 0 147 147" fill="none">
+									<path d="M68.8718 9.40329L65.3591 6.94215C57.9297 1.73676 47.5882 4.82929 44.2362 13.2588L42.6513 17.2443C41.4973 20.1464 38.6376 22.0044 35.5169 21.8797L31.2313 21.7083C22.167 21.3459 15.1391 29.5385 16.8766 38.4421L17.698 42.6518C18.2962 45.7171 16.895 48.8262 14.2022 50.4084L10.5043 52.5813C2.683 57.1769 1.20006 67.8686 7.47532 74.4194L10.4423 77.5167C12.6028 79.772 13.1049 83.1451 11.695 85.932L9.75884 89.7591C5.66375 97.8537 10.1965 107.65 19.0173 109.768L23.1878 110.77C26.2246 111.499 28.4707 114.065 28.7913 117.172L29.2316 121.438C30.1629 130.462 39.2723 136.252 47.838 133.265L51.8879 131.853C54.8369 130.825 58.1138 131.769 60.0631 134.209L62.7401 137.56C68.402 144.648 79.1959 144.594 84.787 137.451L87.4305 134.073C89.3554 131.614 92.6227 130.637 95.5818 131.636L99.6456 133.007C108.241 135.909 117.292 130.028 118.133 120.996L118.531 116.725C118.821 113.615 121.041 111.027 124.071 110.267L128.231 109.224C137.03 107.018 141.465 97.1777 137.29 89.1243L135.316 85.3166C133.878 82.5439 134.346 79.1659 136.484 76.8892L139.42 73.7626C145.63 67.1496 144.041 56.4732 136.174 51.9557L132.455 49.8198C129.746 48.2645 128.314 45.1694 128.882 42.0983L129.661 37.8806C131.31 28.9602 124.201 20.838 115.141 21.2906L110.857 21.5046C107.738 21.6604 104.86 19.831 103.677 16.9405L102.052 12.971C98.6167 4.57526 88.2449 1.58584 80.8677 6.86495L77.3797 9.36093C74.8398 11.1784 71.4296 11.1954 68.8718 9.40329Z" fill="url(#paint0_linear_382_751)" fill-opacity="0.6" stroke="black" stroke-width="6"></path>
+									<defs>
+										<linearGradient id="paint0_linear_382_751" x1="52.349" y1="1.91233" x2="94.5302" y2="142.967" gradientunits="userSpaceOnUse">
+											<stop stop-color="#C0C0C0"></stop>
+											<stop offset="1" stop-color="#A6A6A6"></stop>
+										</linearGradient>
+									</defs>
+								</svg>
+							</div>
+						</div>
+						<div class="showcase-card-logos">
+							<img src="{{Image(multi.logo)}}" alt="" class="showcase-card-logo">
+							<img src="{{Image(multi.logo)}}" alt="" class="showcase-card-logo">
+							<img src="{{Image(multi.logo)}}" alt="" class="showcase-card-logo">
+							<img src="{{Image(multi.logo)}}" alt="" class="showcase-card-logo">
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+			<div class="showcase-background">
+				<div class="showcase-background-gradient"></div>
+				<img src="{{ theme_uri }}/img/cave.webp" alt="">
+			</div>
+		</section>
+		<section class="utopia-cont">
+			<img src="{{ theme_uri }}/img/tractor.webp" loading="lazy" alt="" class="utopia-img-transition tractor">
+			<div class="utopia-titles" id="utopia">
+				<h2 class="utopia-title">Utopie</h2>
+				<p class="utopia-dystitle">Dystopie</p>
+			</div>
+			<div class="utopia-texts">
+				<p class="utopia-text main">
+					Comment parler d’utopie quand on vit dans ce monde ?
+					<br>
+					Un monde digne des plus grandes
+					<b>dystopies</b>.
+					<br>
+					Un monde où on préfère détruire la planête pour faire tourner
+					<span>
+						l’économie,</span>
+					<br>
+					Et gagner un peu plus d’argent, un peu plus de pouvoir.
+					<br>
+					Un monde où les plus riches choisissent pour nous,
+					<br>
+					Où les mutlinationales achètent nos politiciens.
+					<br>
+					Un monde où la parole et la vie d’un certain aura plus d’importance
+																																																																																																																																																																																																																																											            que les autres.
+					<br>
+					Un monde où on est constamment surveilléex,
+					<br>
+					où nos données sont vendues comme des p'tits pains.
+					<br>
+					Un monde qui a choisi notre destin: travailler, payer et consommer pour faire tourner la machine.
+				</p>
+				<p class="utopia-text highlight right">
+					Mais ce n'est pas sans espoir
+				</p>
+				<p class="utopia-text">
+					Arrêtons d’acheter n’importe quoi à n’importe qui, car nous soutenons un système corrompu.
+				</p>
+				<p class="utopia-text right">
+					Repensons notre consommation et nos modes de vie pour arrêter de
+																																																																																																																																																																																																																																											            dépendre du travail de populations oppressées.
+				</p>
+				<p class="utopia-text center">
+					Et posons-nous la question:
+					<i>C’est vraiment ça la vie qu’on veut ?</i>
+				</p>
+			</div>
+
+			<img src="{{ theme_uri }}/img/moutains.webp" loading="lazy" alt="" class="utopia-img-transition moleson">
+		</section>
+	</main>
+	<div class="footer-spacer"></div>
+	<footer class="footer-cont">
+		<h2 class="footer-text">J'espère que vous avez kiffé !</h2>
+		<a href="https://basile-kamm.ch" target="_blank" class="footer-cta">basile-kamm.ch</a>
+		<p class="footer-copyright">© S6 eikon - 2k25</p>
+		<img src="{{ theme_uri }}/img/footer.webp" alt="" class="footer-img" loading="lazy">
+	</footer>
+{% endblock %}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>GlobaLies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.2e833de6.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header-container desktop">
+  <h1 class="header-h1"><a href="index.html">GlobaLies</a></h1>
+  <nav class="header-nav">
+    <a href="archive-marque.html" class="header-nav-item">marques</a>
+    <a href="" class="header-nav-item">multinationales</a>
+    <a href="" class="header-nav-item">utopie?</a>
+  </nav>
+</header>
+<!-- mobile -->
+<header class="header-container mobile">
+  <div class="header-mobile-navbar">
+    <h1 class="header-h1"><a href="index.html">GlobaLies</a></h1>
+    <button aria-label="Open menu" onclick="openMenu()" class="header-btn">
+      <svg width="13" height="26" viewBox="0 0 13 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.499999 13L13 0.5L13 25.5L0.499999 13Z" fill="black"></path>
+      </svg>
+    </button>
+  </div>
+  <nav class="header-nav-mobile">
+    <a href="archive-marque.html" class="header-nav-item">marques</a>
+    <a href="single-multinationales.html" class="header-nav-item">multinationales</a>
+    <a href="" class="header-nav-item">utopie?</a>
+  </nav>
+</header>
+
+
+    <main class="mid">
+      <div class="archive-content">
+        <div class="archive-content-bg"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-0 col-md-2">
+              <button aria-label="Open filter" onclick="openFilter()" class="filters-box mobile-open hidden">
+                🔍
+              </button>
+              <form method="get" class="filters-cont">
+                <input class="filters-box research" type="text" name="search" value="" placeholder="Rechercher...">
+                <div class="filters-box trier">
+                  <h2 class="filters-box-title">Trier</h2>
+                  <div class="filters-box-cont">
+                    <label><input type="radio" name="sort" value="desc">
+                      <div class="filter-box-radio"></div>
+                      Score <span>(décroissant)</span></label>
+                    <label><input type="radio" name="sort" value="asc">
+                      <div class="filter-box-radio"></div>
+                      Score <span>(croissant)</span></label>
+                    <label><input type="radio" checked="" name="sort" value="initial">
+                      <div class="filter-box-radio"></div>
+                      Récemment modifié</label>
+                  </div>
+                </div>
+                <div class="filters-box filtrer">
+                  <h2 class="filters-box-title">Filter</h2>
+                  <div class="filters-box-cont">
+                    <label>
+                      <input type="radio" name="filter" value="inde">
+                      <div class="filter-box-radio"></div>
+                      Marque indépendante
+                    </label>
+                    <label>
+                      <input type="radio" name="filter" value="sub">
+                      <div class="filter-box-radio"></div>
+                      Sous-marques
+                    </label>
+                    <label>
+                      <input type="radio" name="filter" checked="" value="all">
+                      <div class="filter-box-radio"></div>
+                      Toutes
+                    </label>
+                  </div>
+                </div>
+                <div class="filters-box pagination">
+                  <p class="filters-box-pagination-elem text">
+                    page précendente
+                  </p>
+                  <p class="filters-box-pagination-elem">1</p>
+                  <p class="filters-box-pagination-elem">2</p>
+                  <p class="filters-box-pagination-elem">...</p>
+                  <p class="filters-box-pagination-elem">5</p>
+                  <p class="filters-box-pagination-elem text">page suivante</p>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-10 col-12">
+              <div class="archive-title-cont">
+                <h1 class="archive-title main">Marques</h1>
+                <p class="archive-title difference">Marques</p>
+              </div>
+              <div class="archive-title-cont">
+                <h1 class="archive-title main multi">multinationales</h1>
+                <p class="archive-title difference multi">multinationales</p>
+              </div>
+
+              <div class="archives-cont">
+                <a href="single-marque.html" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <div class="archive-item-texts">
+                    <p class="archive-item-type">Alternative a la viande</p>
+                    <p class="archive-item-situation">Marque indépendante</p>
+                  </div>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                  <img src="img/activia.be901fe3.png" class="archive-item-logo" alt="">
+                </a>
+                <a href="single-multinationales.html" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <p class="archive-item-type">Alternative a la viande</p>
+                  <p class="archive-item-situation">Marque indépendante</p>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+                <a href="" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <p class="archive-item-type">Alternative a la viande</p>
+                  <p class="archive-item-situation">Marque indépendante</p>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+                <a href="" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <div class="archive-item-texts">
+                    <p class="archive-item-type">Alternative a la viande</p>
+                    <p class="archive-item-situation">Marque indépendante</p>
+                  </div>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+                <a href="" class="archive-item solo-low">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <p class="archive-item-type">Marque indépendante</p>
+                  <p class="archive-item-situation">
+                    Sous-marque de nestlé et de cargil
+                  </p>
+
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+                <a href="" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <p class="archive-item-type">Marque indépendante</p>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+                <a href="" class="archive-item">
+                  <h3 class="archive-item-title">Robert & CO</h3>
+                  <p class="archive-item-type">Marque indépendante</p>
+                  <div class="archive-item-score">
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                    <p>79</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="blank.html" class="archive-corr">Suggérer une correction</a>
+      </div>
+      <div class="archive-bg-cont">
+        <img src="img/usine-2.6477c2e3.webp" alt="" class="archive-bg">
+      </div>
+    </main>
+    <script src="js/index.ccce9596.js" type="module"></script>
+  </body>
+</html>
